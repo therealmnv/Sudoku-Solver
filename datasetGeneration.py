@@ -7,7 +7,7 @@ import cv2 as cv
 def image2array(img):
     if len(img.shape) == 3:
         img = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-
+        
     rows,cols = img.shape
     img_size = rows*cols
     return img.reshape(img_size)
@@ -16,7 +16,7 @@ parent_dir = "D:/Java Programs (VS Studio)/Python/Sudoku Solver/dataset/"
 
 l = []
 y = []
-count = 0
+
 for i in os.listdir(parent_dir):
     path = os.path.join(parent_dir, i)
 
@@ -25,7 +25,7 @@ for i in os.listdir(parent_dir):
 
         img = cv.imread(filepath,0)
         _,thresh1 = cv.threshold(img,50,255,cv.THRESH_BINARY)
-        count += 1
+        
         img_1D_vector = image2array(thresh1)     
         l.append(img_1D_vector)
         y.append(i)
